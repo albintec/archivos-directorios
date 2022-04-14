@@ -1,59 +1,20 @@
-<?php
-$msg = null;
-if(isset($_POST["escribir"])) {
-    $nombre = $_POST["nombre"];
-    $extension = $_POST["extension"];
-    $contenido = $_POST["contenido"];
-
-    $ruta = "archivos/".$nombre.$extension;
-
-    $manejador =  fopen($ruta, 'w');
-
-    if(fwrite($manejador, $contenido)){
-        $msg ="El archivo fue creado";
-        $msg = "Puedes verlo en ... <a href='$ruta' target='_blank'>$ruta</a>";
-    }
-    else {
-        $msg = "Ha ocurrido un error";
-    }
-
-    fclose($manejador);
-}
-?>
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Bloc de notas</title>
 </head>
 <body>
-    <strong><?php echo $msg; ?></strong>
-    <form action="" method="post">
-     <table>
-         <tr>
-             <td>Nombre del archivo:</td>
-             <td><input type="text" name="nombre"></td> 
-        </tr>
-        <tr>
-         <td>Extensión del Archivo:</td>
-         <td>
-             <select name="extension">
-                 <option value=".txt">.txt</option>
-             </select>
-        </td>
-       </tr>
-       <tr>
-           <td>Contenido del Archivo:</td>
-           <td><textarea name="contenido" cols="30" rows="10"></textarea></td>
-       </tr>
-     </table>
-     <input type="hidden" name="escribir">
-     <input type="submit" value="Crear Archivo">
+    <div class="container-lg">
+      <h1 class="display-3">Aplicación para crear arvichos txt y directorios</h1>
+      <a href="./crear_archivo.php" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Crear Archivo</a>
+      <a href="./crear_directorio.php" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Crear Directorio</a>
+    </div>
 
-    </form>
+    <footer>Elaborado por Albin Ramirez</footer>
 </body>
 </html>
